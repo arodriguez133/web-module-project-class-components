@@ -25,12 +25,26 @@ constructor(){
 handleClearPurchased = () => {
 
 const newTodo = this.state.todo.filter((item) => {
-  return item.completed === false;
+  return item.completed === !item.purchased;
 })
 
   this.setState({
     ...this.state,
     todo: newTodo,
+  })
+}
+
+handleAddTodo = (item) => {
+const newItem = {
+  todo: item,
+  id: 61243,
+  completed: false,
+}
+
+
+  this.setState({
+    ...this.state,
+    todo: [...this.state.todo, newItem]
   })
 }
   // you will need a place to store your state in this component.
@@ -40,7 +54,7 @@ const newTodo = this.state.todo.filter((item) => {
   render() {
     return (
       <div>
-        <TodoList todoItems={this.state.todo} handleClearPurchased={this.handleClearPurchased} />
+        <TodoList todoItems={this.state.todo} handleClearPurchased={this.handleClearPurchased} handleAddTodo={this.handleAddTodo} />
       </div>
     );
   }

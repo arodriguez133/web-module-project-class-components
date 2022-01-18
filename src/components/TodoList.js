@@ -11,7 +11,7 @@ import TodoForm from './TodoForm';
  const TodoList = (props) => {
 return (
     <div>
-        <TodoForm/>
+        <TodoForm handleAddTodo={props.handleAddTodo}/>
         {props.todoItems.map(item=>{
             return <Todo key={item.id} item={item.todo}/>
         })}

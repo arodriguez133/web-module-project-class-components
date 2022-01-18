@@ -1,10 +1,16 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
-const TodoForm = () => {
+const TodoForm = (props) => {
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.handleAddTodo("Salsa");
+    };
 return(
     <div>
         <h1>Todo List</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
             <input type="text"></input>
             <button>Add</button>
         </form>
