@@ -1,22 +1,37 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, {useState} from 'react';
 
-const TodoForm = (props) => {
+export default class TodoForm extends React.Component{
+    constructor(){
+        super();
 
-    const handleSubmit = (e) => {
+        this.state = {
+            item: '',
+        }
+    }
+
+    
+    handleChanges = (e) => {
+        this.setState({
+            item: e.target.value, 
+        })
+    }
+
+    submitItem = (e) => {
         e.preventDefault();
-        props.handleAddTodo("Salsa");
-    };
-return(
-    <div>
-        <h1>Todo List</h1>
-        <form onSubmit={handleSubmit}>
-            <input type="text"></input>
-            <button>Add</button>
-        </form>
-        
-    </div>
-)
-}
+        this.setState({item: ''});
+        this.props.handleAddTodo(this.state.item);
+    }
 
-export default TodoForm;
+    render(){
+        return(
+            <form onSubmit={this.submitItem}>
+                <input type="text" 
+                       name="item" 
+                       value={this.state.item}
+                       onChange={this.handleChanges}/>
+                <button>Add</button>
+            </form>
+        )
+    }
+}
