@@ -9,13 +9,17 @@ import TodoForm from './TodoForm';
 
 //This is where I have to map the items within the Todo Item. 
  const TodoList = (props) => {
+
 return (
     <div>
-        <TodoForm handleAddTodo={props.handleAddTodo}/>
-        {props.todoItems.map(item=>{
-            return <Todo key={item.id} item={item.todo}/>
-        })}
-        <button onClick={props.handleClearPurchased}>Clear Tasks</button>
+        <TodoForm  addItem={props.addItem}/>
+        {props.todoItems.map((item) => (
+             <Todo 
+                key={item.id} 
+                item={item} 
+                toggleCompleted={props.toggleCompleted}/>
+        ))}
+        <button onClick={props.clearCompleted} className="clear-btn">Clear Tasks</button>
     </div>
 )
 } 

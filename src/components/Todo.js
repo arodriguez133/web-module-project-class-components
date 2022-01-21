@@ -3,10 +3,11 @@ import React from 'react';
 import './Todo.css';
 
 const Todo = (props) => {
-    console.log(props);
     return(
-        <div className='item'>
-            <h3>{props.item}</h3>
+        <div 
+            className={`item${props.item.completed ? ' purchased' : ''}`}
+            onClick={() => props.toggleCompleted(props.item.id)}>
+            <h3>{props.item.name}</h3>
         </div>
     )
 }
